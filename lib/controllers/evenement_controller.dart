@@ -111,3 +111,20 @@ class EvenementController extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+  // ── Événements du jour ──
+  List<Evenement> evenementsDuJour(DateTime jour) {
+    return _evenements.where((e) {
+      return e.dateDebut.year == jour.year &&
+          e.dateDebut.month == jour.month &&
+          e.dateDebut.day == jour.day;
+    }).toList();
+  }
+
+  // ── Prochain événement ──
+  Evenement? get prochainEvenement {
+    final aVenir = evenementsAVenir;
+    if (aVenir.isEmpty) return null;
+    aVenir.sort((a, b) => a.dateDebut.compareTo(b.dateDebut));
+    return aVenir.first;
+  }
