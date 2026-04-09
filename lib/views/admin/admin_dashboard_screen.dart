@@ -397,3 +397,19 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen>
     );
   }
 }
+
+// Extension: suppression livre depuis admin
+extension AdminLivreActions on _AdminDashboardScreenState {
+  Future<void> supprimerLivre(BuildContext context, String livreId) async {
+    final confirm = await Helpers.confirmer(
+      context,
+      titre: 'Supprimer le livre',
+      message: 'Cette action est irréversible.',
+      boutonConfirmer: 'Supprimer',
+      couleurConfirmer: AppColors.error,
+    );
+    if (!confirm) return;
+    await context.read<LivreController>().supprimerLivre(livreId);
+    if (context.mounted) Helpers.showSuccess(context, 'Livre supprimé.');
+  }
+}
