@@ -137,3 +137,9 @@ class AuthController extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+  // ── Vérifier si admin ──
+  bool get estAdmin => _membre?.estAdmin ?? false;
+
+  // ── Vérifier si membre actif ──
+  bool get peutEmprunter => _membre?.peutEmprunter ?? false;
