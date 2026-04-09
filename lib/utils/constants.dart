@@ -267,3 +267,10 @@ class AppRoutes {
   static const String adminEmprunts = '/admin/emprunts';
   static const String scanner = '/scanner';
 }
+
+// Version de l'application
+class AppVersion {
+  static const String version = '1.0.0';
+  static const String buildNumber = '1';
+  static const String releaseDate = '2026-04-08';
+}
