@@ -62,6 +62,13 @@ class Avis {
     );
   }
 
+  // Alias pour compatibilité Firestore
+  factory Avis.fromFirestore(DocumentSnapshot doc) {
+    return Avis.fromMap(doc.data() as Map<String, dynamic>, doc.id);
+  }
+
+  Map<String, dynamic> toFirestore() => toMap();
+
   Map<String, dynamic> toMap() => {
         'membreId': membreId,
         'membreNom': membreNom,

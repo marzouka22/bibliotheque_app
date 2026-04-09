@@ -63,9 +63,9 @@ class LivreCard extends StatelessWidget {
                     const SizedBox(height: 6),
                     Row(
                       children: [
-                        _badgeGenre(),
-                        const SizedBox(width: 8),
-                        _badgeStatut(),
+                        Flexible(child: _badgeGenre()),
+                        const SizedBox(width: 6),
+                        Flexible(child: _badgeStatut()),
                       ],
                     ),
                     const SizedBox(height: 6),
@@ -100,49 +100,53 @@ class LivreCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Couverture
-            Stack(
-              children: [
-                ClipRRect(
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(12)),
-                  child: _couverture(width: double.infinity, height: 160),
-                ),
-                Positioned(
-                  top: 8,
-                  right: 8,
-                  child: _badgeStatutSmall(),
-                ),
-                if (onWishlist != null)
+            // Couverture — prend l'espace restant
+            Expanded(
+              child: Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius:
+                        const BorderRadius.vertical(top: Radius.circular(12)),
+                    child: _couverture(width: double.infinity, height: double.infinity),
+                  ),
                   Positioned(
-                    bottom: 8,
-                    right: 8,
-                    child: GestureDetector(
-                      onTap: onWishlist,
-                      child: CircleAvatar(
-                        radius: 16,
-                        backgroundColor: Colors.white70,
-                        child: Icon(
-                          isInWishlist
-                              ? Icons.favorite
-                              : Icons.favorite_border,
-                          color: isInWishlist ? Colors.red : Colors.grey,
-                          size: 18,
+                    top: 6,
+                    right: 6,
+                    child: _badgeStatutSmall(),
+                  ),
+                  if (onWishlist != null)
+                    Positioned(
+                      bottom: 6,
+                      right: 6,
+                      child: GestureDetector(
+                        onTap: onWishlist,
+                        child: CircleAvatar(
+                          radius: 14,
+                          backgroundColor: Colors.white70,
+                          child: Icon(
+                            isInWishlist
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: isInWishlist ? Colors.red : Colors.grey,
+                            size: 16,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-              ],
+                ],
+              ),
             ),
+            // Infos — hauteur fixe
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.fromLTRB(8, 6, 8, 6),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     livre.titre,
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 13),
+                        fontWeight: FontWeight.bold, fontSize: 12),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -154,7 +158,7 @@ class LivreCard extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 3),
                   _noteWidget(small: true),
                 ],
               ),

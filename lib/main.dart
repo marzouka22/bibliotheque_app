@@ -72,6 +72,8 @@ class BiblioApp extends StatelessWidget {
               AppRoutes.home: (_) => const MainNavigationScreen(),
               AppRoutes.login: (_) => const LoginScreen(),
               AppRoutes.adminDashboard: (_) => const AdminDashboardScreen(),
+              AppRoutes.evenements: (_) => const EvenementsScreen(),
+              AppRoutes.catalogue: (_) => const CatalogueScreen(),
             },
           );
         },

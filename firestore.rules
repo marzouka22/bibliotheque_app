@@ -55,7 +55,14 @@ service cloud.firestore {
     // Événements
     match /evenements/{evenementId} {
       allow read: if true;
-      allow create, update, delete: if isAdmin();
+      allow create, delete: if isAdmin();
+      // Admin : mise à jour complète
+      // Membre authentifié : uniquement inscription/désinscription
+      allow update: if isAdmin() || (
+        isAuthenticated() &&
+        request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['participantsIds', 'nbInscrits'])
+      );
     }
 
     // Conversations et messages

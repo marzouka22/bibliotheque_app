@@ -110,7 +110,6 @@ class EvenementController extends ChangeNotifier {
     _errorMessage = null;
     notifyListeners();
   }
-}
 
   // ── Événements du jour ──
   List<Evenement> evenementsDuJour(DateTime jour) {
@@ -128,3 +127,4 @@ class EvenementController extends ChangeNotifier {
     aVenir.sort((a, b) => a.dateDebut.compareTo(b.dateDebut));
     return aVenir.first;
   }
+}

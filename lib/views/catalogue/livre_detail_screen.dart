@@ -107,7 +107,6 @@ class _LivreDetailScreenState extends State<LivreDetailScreen> {
 
     final avis = Avis(
       id: '',
-      livreId: widget.livre.id,
       membreId: auth.uid!,
       membreNom: auth.membre?.nom ?? 'Anonyme',
       note: _maNote,

@@ -94,30 +94,34 @@ class EmpruntItem extends StatelessWidget {
                       children: [
                         if (onProlonger != null &&
                             emprunt.nbProlongations == 0) ...[
-                          OutlinedButton.icon(
-                            onPressed: onProlonger,
-                            icon: const Icon(Icons.update, size: 16),
-                            label: const Text('Prolonger',
-                                style: TextStyle(fontSize: 12)),
-                            style: OutlinedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 6),
+                          Flexible(
+                            child: OutlinedButton.icon(
+                              onPressed: onProlonger,
+                              icon: const Icon(Icons.update, size: 14),
+                              label: const Text('Prolonger',
+                                  style: TextStyle(fontSize: 11)),
+                              style: OutlinedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 4),
+                              ),
                             ),
                           ),
-                          const SizedBox(width: 8),
+                          const SizedBox(width: 6),
                         ],
                         if (onRetourner != null)
-                          ElevatedButton.icon(
-                            onPressed: onRetourner,
-                            icon: const Icon(Icons.assignment_return, size: 16),
-                            label: const Text('Retourner',
-                                style: TextStyle(fontSize: 12)),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: isEnRetard
-                                  ? AppColors.error
-                                  : AppColors.primary,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 6),
+                          Flexible(
+                            child: ElevatedButton.icon(
+                              onPressed: onRetourner,
+                              icon: const Icon(Icons.assignment_return, size: 14),
+                              label: const Text('Retourner',
+                                  style: TextStyle(fontSize: 11)),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: isEnRetard
+                                    ? AppColors.error
+                                    : AppColors.primary,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 4),
+                              ),
                             ),
                           ),
                       ],
