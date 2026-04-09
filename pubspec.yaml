@@ -50,3 +50,5 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+
+# Commentaire ajouté: version stable testée avec Firebase 3.8.0
