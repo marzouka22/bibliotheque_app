@@ -185,3 +185,10 @@ class LivreController extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+  // ── Wishlist locale ──
+  List<String> get wishlistIds => _wishlist.map((l) => l.id).toList();
+
+  bool estEnWishlist(String livreId, List<String> wishlist) {
+    return wishlist.contains(livreId);
+  }
